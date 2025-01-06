@@ -22,7 +22,7 @@ export default function KelasGuru() {
     const userNavigation = [
         { name: 'Your Profile', href: '#' },
         { name: 'Settings', href: '#' },
-        { name: 'Sign out', href: '#' },
+        { name: 'Sign out', href: '/login' },
     ];
 
     function classNames(...classes) {
@@ -55,7 +55,7 @@ export default function KelasGuru() {
                             <div className="shrink-0">
                                 <img
                                     alt="Your Company"
-                                    src="smabn.png"
+                                    src="/public/smabn.png"
                                     className="size-10"
                                 />
                             </div>

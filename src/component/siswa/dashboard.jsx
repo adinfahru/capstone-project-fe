@@ -19,7 +19,7 @@ const navigation = [
 const userNavigation = [
     { name: 'Your Profile', href: '#' },
     { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
+    { name: 'Sign out', href: '/login' },
 ];
 
 const people = [
@@ -65,7 +65,7 @@ export default function SiswaDashboard() {
                             <div className="shrink-0">
                                 <img
                                     alt="Your Company"
-                                    src="smabn.png"
+                                    src="/public/smabn.png"
                                     className="size-10"
                                 />
                             </div>

@@ -1,6 +1,65 @@
 import axios from "axios";
 const BASE_URL = "http://127.0.0.1:8000/";
 
+export async function deleteQuiz(quizId) {
+  const token = localStorage.getItem("tokens"); // Ambil token dari localStorage
+  try {
+    const response = await axios.delete(
+      `${BASE_URL}api/quizzes/${quizId}/`, // Endpoint untuk menghapus kelas
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Tambahkan Authorization header
+        },
+      }
+    );
+    return response.data; // Kembalikan response jika dibutuhkan
+  } catch (error) {
+    console.error("Error deleting class:", error.response?.data || error.message);
+    throw error.response?.data || "Failed to delete class.";
+  }
+}
+
+export async function deleteClass(id_class) {
+  const token = localStorage.getItem("tokens"); // Ambil token dari localStorage
+  try {
+    const response = await axios.delete(
+      `${BASE_URL}api/classes/${id_class}/`, // Endpoint untuk menghapus kelas
+      {
+        headers: {
+          Authorization: `Bearer ${token}`, // Tambahkan Authorization header
+        },
+      }
+    );
+    return response.data; // Kembalikan response jika dibutuhkan
+  } catch (error) {
+    console.error("Error deleting class:", error.response?.data || error.message);
+    throw error.response?.data || "Failed to delete class.";
+  }
+}
+
+export async function updateClass(id_class, classData) {
+  const token = localStorage.getItem("tokens"); // Ambil token dari localStorage
+  try {
+      const response = await axios.put(
+          `${BASE_URL}api/classes/${id_class}/`, 
+          {
+            name: classData.name,  // Kirimkan name secara langsung
+            subject: classData.subject  // Kirimkan subject secara langsung
+          },
+          {
+              headers: {
+                  Authorization: `Bearer ${token}`, // Menambahkan Authorization header
+                  "Content-Type": "application/json", // Pastikan tipe konten adalah JSON
+              }
+          }
+      );
+      return response.data;
+  } catch (error) {
+      console.error('Error updating class:', error.response?.data || error.message);
+  }
+}
+
+
 export const getQuestionsBySession = async (sessionId) => {
   const token = localStorage.getItem("tokens");
 

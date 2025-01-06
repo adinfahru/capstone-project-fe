@@ -17,6 +17,7 @@ import CreateSession from "./component/guru/create_session";
 import CreateQuestion from "./component/guru/create_question";
 import QuizDetail from "./component/guru/quiz_detail";
 import SessionQuestions from './component/guru/session_detail';
+import UpdateClass from './component/guru/update_kelas';
 import Unauthorized from "./unauthorized";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/guru/kelas/:id_class/quiz/:id_quiz/session/:id_session/create-question" element={<CreateQuestion />} />
         <Route path="/guru/kelas/:id_class/quiz/:quizId" element={<QuizDetail />} />
         <Route path="/guru/kelas/:id_class/session/:sessionId/questions" element={<SessionQuestions />} />
+        <Route path="/guru/kelas/:id_class/update" element={<UpdateClass />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
       </Routes>
     </Router>
