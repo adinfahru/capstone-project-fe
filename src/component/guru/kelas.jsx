@@ -3,7 +3,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { BellIcon } from '@heroicons/react/24/outline';
 import { Button } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
-import { getKelasSiswa } from '../apiservice'; // Mengimpor fungsi yang benar
+import { getKelas } from '../apiservice'; // Mengimpor fungsi yang benar
 import axios from 'axios';
 
 export default function KelasGuru() {
@@ -15,8 +15,8 @@ export default function KelasGuru() {
     };
 
     const navigation = [
-        { name: 'Dashboard', href: '/siswa', current: false },
-        { name: 'Kelas', href: '/siswa/kelas', current: true },
+        { name: 'Dashboard', href: '/guru', current: false },
+        { name: 'Kelas', href: '/guru/kelas', current: true },
     ];
 
     const userNavigation = [
@@ -36,7 +36,7 @@ export default function KelasGuru() {
     useEffect(() => {
         const fetchKelasData = async () => {
             try {
-                const data = await getKelasSiswa(); // Panggil fungsi getKelas untuk mengambil data
+                const data = await getKelas(); // Panggil fungsi getKelas untuk mengambil data
                 setKelasData(data); // Simpan data kelas ke dalam state
             } catch (error) {
                 setErrorMessage(error.message || "Failed to fetch kelas data");
@@ -118,8 +118,8 @@ export default function KelasGuru() {
                 <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex justify-between items-center">
                     <h1 className="text-3xl font-bold tracking-tight text-gray-900">Kelas</h1>
                     <div className="hidden sm:flex sm:items-end">
-                        <Link to="/siswa/gabungkelas">
-                            <Button className="rounded-full px-8 py-4 text-sm">Gabung Kelas</Button>
+                        <Link to="/guru/buatkelas">
+                            <Button className="rounded-full px-8 py-4 text-sm">Buat Kelas</Button>
                         </Link>
                     </div>
                 </div>
@@ -147,6 +147,7 @@ export default function KelasGuru() {
                             <button
                                 className="rounded-md bg-slate-800 py-2 px-4 text-sm text-white hover:bg-slate-700"
                                 type="button"
+                                onClick={() => window.location.href = `/guru/kelas/${kelas.id}`}
                             >
                                 More info
                             </button>
