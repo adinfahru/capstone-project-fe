@@ -13,7 +13,7 @@ const user = {
 
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
-    { name: 'Kelas', href: '/siswa/kelas', current: false },
+    { name: 'Kelas', href: '/guru/kelas', current: false },
 ];
 
 const userNavigation = [
@@ -49,7 +49,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
-export default function SiswaDashboard() {
+export default function DashboardGuru() {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     const handlePopupToggle = () => {

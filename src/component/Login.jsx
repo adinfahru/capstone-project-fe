@@ -13,7 +13,8 @@ export default function Login() {
     try {
       const data = await login(email, password);
       // Simpan token JWT (jika diberikan) ke localStorage
-      localStorage.setItem("tokens", data.token);
+      localStorage.setItem("tokens", data.tokens.access);
+      localStorage.setItem("refresh",data.tokens.refresh);
       localStorage.setItem("role", data.role);
       // Redirect ke halaman siswa
       navigate(data.role === "student" ? "/siswa" : "/guru");
